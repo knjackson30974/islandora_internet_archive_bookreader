@@ -231,6 +231,7 @@
       else {
         resource_uri = this.settings.pages[index].uri
       }
+
       return this.getDjatokaUri(resource_uri);
     }
   }
@@ -582,7 +583,7 @@
     br_top += 'px';
     $('div#BRcontainer').css({
       'height':'100%',
-      'top':br_top 
+      'top':br_top
     });
     //this little hack re-centers the pages
     this.zoom(1);
@@ -807,11 +808,21 @@
     // Updated with fix to recent bug found in the Archive Viewer that
     // prevents the last page from displaying the correct transcriptions
     // or hash links.
-    var page_string = $('#pagenum').children('.currentpage').html();
+    var pageNum = this.getPageNum(index);
+    var pageStr;
+    if (pageNum[0] == 'n') { // funny index
+        pageStr = index + 1 + ' / ' + this.numLeafs; // Accessible index starts at 0 (alas) so we add 1 to make human
+    } else {
+        pageStr = 'Page ' + pageNum;
+    }
+
+    var page_string = $('#pagenum .currentpage').text(pageStr);
+    console.log("The string: " + page_string);
     if (page_string != null) {
       var p_arr = page_string.split(" ");
       var p_index = p_arr[1]
       index = p_index;
+      console.log("This is the new index: " + index);
     }
     else {
       index = 1;
