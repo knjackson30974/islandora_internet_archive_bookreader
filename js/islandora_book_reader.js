@@ -822,7 +822,6 @@
       var p_arr = page_string.split(" ");
       var p_index = p_arr[1]
       index = p_index;
-      console.log("This is the new index: " + index);
     }
     else {
       index = 1;
