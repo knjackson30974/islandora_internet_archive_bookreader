@@ -307,7 +307,7 @@
               that.BRSearchCallback(data);
             },
             error: function() {
-              alert("Search call to " + url + " failed");
+              alert(Drupal.t("Search call to " + url + " failed"));
             }
            });
   }
@@ -817,7 +817,6 @@
     }
 
     var page_string = $('#pagenum .currentpage').text(pageStr);
-    console.log("The string: " + page_string);
     if (page_string != null) {
       var p_arr = page_string.split(" ");
       var p_index = p_arr[1]
